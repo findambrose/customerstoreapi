@@ -4,34 +4,37 @@ package com.findambrose.customerstoreapi.country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 public class CountryController {
 
     @Autowired
     CountryService countryService;
-
+    @PostMapping("/countries")
+    public void createCountry (@RequestBody Country country){
+        countryService.createCountry(country);
+    }
     @GetMapping("/countries")
-    public String getAllCountries(){
-        return "All Countries";
+    public ArrayList<Country> getAllCountries(){
+       return countryService.getAllCountries();
     }
 
     @GetMapping("/countries/{id}")
-    public String getOneCountry(@PathVariable String id){
-        return id;
-    }
-    @PostMapping("/countries")
-    public String createCountry (@RequestBody Country country){
-        return "Countries created" + country.getFullName();
+    public Country getOneCountry(@PathVariable String id){
+        return countryService.getOneCountry(id);
     }
 
     @PutMapping("/countries/{id}")
-    public String updateCountry (@RequestBody Country country){
-        return "Country updated" + country.getFullName();
+    public void updateCountry (@RequestBody Country country){
+        countryService.updateCountry(country);
+
     }
 
     @DeleteMapping("/countries/{id}")
-    public String deleteCountry (@PathVariable Country country){
-        return "Country deleted" + country.getFullName();
+    public void deleteCountry (@PathVariable String id){
+
+        countryService.deleteCountry(id);
     }
 
 }
