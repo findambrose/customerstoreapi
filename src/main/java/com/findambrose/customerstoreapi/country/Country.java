@@ -15,6 +15,10 @@ public class Country {
         this.fullName = fullName;
     }
 
+    public Country() {
+
+    }
+
     public String getId() {
         return id;
     }

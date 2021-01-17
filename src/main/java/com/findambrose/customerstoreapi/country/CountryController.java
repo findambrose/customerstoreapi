@@ -22,6 +22,7 @@ public class CountryController {
 
     @GetMapping("/countries/{id}")
     public Country getOneCountry(@PathVariable String id){
+
         return countryService.getOneCountry(id);
     }
 
