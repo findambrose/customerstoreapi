@@ -28,8 +28,10 @@ public class CountryService {
 
     }
 
-    public void createCountry (Country country){
-        countryRepository.save(country);
+    public Country createCountry (Country country){
+        return countryRepository.save(country);
+
+
     }
 
     public void updateCountry (Country country){

@@ -12,8 +12,8 @@ public class CountryController {
     @Autowired
     CountryService countryService;
     @PostMapping("/countries")
-    public void createCountry (@RequestBody Country country){
-        countryService.createCountry(country);
+    public Country createCountry (@RequestBody Country country){
+        return countryService.createCountry(country);
     }
     @GetMapping("/countries")
     public ArrayList<Country> getAllCountries(){
