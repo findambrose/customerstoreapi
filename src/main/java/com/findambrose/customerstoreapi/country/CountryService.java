@@ -40,7 +40,7 @@ public class CountryService {
 
     public void deleteCountry (String id){
 
-        countryRepository.delete(countryRepository.findById(id).get());
+        countryRepository.deleteById(id);
 
     }
 
