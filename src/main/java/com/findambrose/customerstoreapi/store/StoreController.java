@@ -29,8 +29,8 @@ public class StoreController {
     }
 
     @GetMapping("countries/{countryId}/stores")
-    public ArrayList<Store> getAll(){
-        return storeService.getAll();
+    public ArrayList<Store> getAll(@PathVariable String countryId){
+        return storeService.getAll(countryId);
     }
 
     @GetMapping("countries/{countryId}/stores/{storeId}")
@@ -40,7 +40,7 @@ public class StoreController {
 
     @DeleteMapping("/countries/{countryId}/stores/{storeId}")
     public String delete(@PathVariable String storeId){
-        if (!storeService.delete(storeId)){
+        if (storeService.delete(storeId)){
         return "Store successfully deleted";
         }
         return "Error deleting store";

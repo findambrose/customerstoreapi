@@ -33,7 +33,6 @@ public class CountryController {
 
     @DeleteMapping("/countries/{id}")
     public void deleteCountry (@PathVariable String id){
-
         countryService.deleteCountry(id);
     }
 

@@ -1,6 +1,7 @@
 package com.findambrose.customerstoreapi.store;
 
 
+import com.findambrose.customerstoreapi.country.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,9 +23,11 @@ public class StoreService {
         storeRepository.save(store);
     }
 
-    public ArrayList<Store> getAll(){
+    public ArrayList<Store> getAll(String countryId){
 
-        Iterable<Store> iterable = storeRepository.findAll();
+        //get all stores in a country
+        Country country = new Country(countryId, "");
+        Iterable<Store> iterable = storeRepository.findAllByCountry(country);
         iterable.forEach(store -> stores.add(store));
         return stores;
     }
