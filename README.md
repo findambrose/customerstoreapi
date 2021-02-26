@@ -1,4 +1,4 @@
-# CustomerStoreapi
+# CustomerStoreApi
 
 A Spring Boot RESTful API. 
 
