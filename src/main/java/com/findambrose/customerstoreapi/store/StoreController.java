@@ -34,7 +34,7 @@ public class StoreController {
     }
 
     @GetMapping("countries/{countryId}/stores/{storeId}")
-     public Store getOne(@PathVariable String storeId){
+    public Store getOne(@PathVariable String storeId){
         return storeService.getOne(storeId);
     }
 

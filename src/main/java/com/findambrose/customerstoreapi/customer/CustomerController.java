@@ -32,7 +32,7 @@ public class CustomerController {
         return customers;
     }
 
-    @GetMapping("/countries/{countryId}/stores/{storeId}")
+    @GetMapping("/countries/{countryId}/allstores/{storeId}")
     public Customer getOne(String id){
         //Return a customers by id
         Customer customer =  customerService.getOne(id);

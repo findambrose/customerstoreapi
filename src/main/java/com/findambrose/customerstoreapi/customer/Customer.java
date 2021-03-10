@@ -2,10 +2,8 @@ package com.findambrose.customerstoreapi.customer;
 
 import com.findambrose.customerstoreapi.store.Store;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import java.util.*;
 
 @Entity
 public class Customer {
@@ -15,14 +13,17 @@ public class Customer {
     String name;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    Store store;
+    @JoinTable(joinColumns = @JoinColumn(name = "id"),
+    inverseJoinColumns = @JoinColumn(name = ""))
+    Set<Store> stores = new HashSet<>();
+
+
     Customer(String id, String name){
         this.id = id;
         this.name = name;
     }
 
-
     public void setStore(Store store){
-        this.store = store;
+        stores.add(store);
     }
 }

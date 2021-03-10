@@ -30,9 +30,6 @@ public class ControllerTest {
    CountryController countryController;
    @Mock
    CountryService countryService;
-
-
-
     @Test
     public void testGetOneCountry(){
 
@@ -46,10 +43,10 @@ public class ControllerTest {
 
         when(countryService.getOneCountry("kenya")).thenReturn(country);
 
-        country = countryController.getOneCountry("kenya");
+        Country countryFound = countryController.getOneCountry("kenya");
 
         //3. Check if country's id is same as kenya
-        assertEquals(country.getId(), "kenya");
+        assertEquals(countryFound.getId(), "kenya");
 
     }
 
@@ -65,7 +62,6 @@ public class ControllerTest {
 
         when(countryService.getAllCountries()).thenReturn(arrayList);
         verify(countryService).getAllCountries();
-
         ArrayList<Country> found = countryController.getAllCountries();
         assertEquals(found, arrayList);
 

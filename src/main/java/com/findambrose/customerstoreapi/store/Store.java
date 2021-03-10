@@ -1,11 +1,11 @@
 package com.findambrose.customerstoreapi.store;
 
 import com.findambrose.customerstoreapi.country.Country;
+import com.findambrose.customerstoreapi.customer.Customer;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Store {
@@ -16,6 +16,9 @@ public class Store {
 
   @ManyToOne(cascade = CascadeType.PERSIST)
   Country country;
+
+  @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "stores")
+  Set<Customer> customers = new HashSet<>();
 
     public Store(){}
 
@@ -30,8 +33,6 @@ public class Store {
     public void setName(String name){
         this.name = name;
     }
-
-
 
     public Country getCountry(){
         return country;
