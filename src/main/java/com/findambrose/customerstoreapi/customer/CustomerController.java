@@ -19,7 +19,7 @@ public class CustomerController {
 
     }
 
-    @PutMapping("/countries/{countryId}/stores{storeId}/customers/{customerId}")
+    @PutMapping("/countries/{countryId}/stores/{storeId}/customers/{customerId}")
     public Customer update(@RequestBody Customer customer, @PathVariable String storeId){
        return customerService.update(customer, storeId);
 
@@ -32,8 +32,8 @@ public class CustomerController {
         return customers;
     }
 
-    @GetMapping("/countries/{countryId}/allstores/{storeId}")
-    public Customer getOne(String id){
+    @GetMapping("/countries/{countryId}/stores/{storeId}/customers/{id}")
+    public Customer getOne(@PathVariable String id){
         //Return a customers by id
         Customer customer =  customerService.getOne(id);
         return customer;

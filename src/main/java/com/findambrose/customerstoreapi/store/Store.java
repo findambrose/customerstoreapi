@@ -14,7 +14,7 @@ public class Store {
   private String id;
   private String name;
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
   Country country;
 
   @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "stores")

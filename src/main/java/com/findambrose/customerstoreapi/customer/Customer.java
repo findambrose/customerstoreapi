@@ -9,8 +9,8 @@ import java.util.*;
 public class Customer {
 
     @Id
-    String id;
-    String name;
+    public String id;
+    public  String name;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(joinColumns = @JoinColumn(name = "id"),
@@ -18,10 +18,12 @@ public class Customer {
     Set<Store> stores = new HashSet<>();
 
 
-    Customer(String id, String name){
+    public Customer(String id, String name){
         this.id = id;
         this.name = name;
     }
+
+    public Customer(){};
 
     public void setStore(Store store){
         stores.add(store);
